@@ -46,6 +46,7 @@ npm --prefix tools test
 | `tools/gate-check.mjs` | the lofi gate accepts 21/21 seed discs, rejects 4/4 non-lofi, 6 adversarial cases — **and** that `LofiFilter.swift` carries byte-identical tables to `lofi-filter.js` |
 | `tools/seed-schema-check.mjs` | every non-optional field in `LofiModels.swift` exists in the seed JSON (a missing key is a Decodable crash at boot) |
 | `tools/swift-symbol-check.mjs` | no undeclared `Y2K.token`, no duplicate top-level type |
+| `tools/swift-init-check.mjs` | every labelled call site matches the declared `init` labels **and order** (Swift rejects out-of-order arguments; nothing here can compile to find it) |
 | `tools/project-check.mjs` | `ios/project.yml` parses, source paths exist, Info.plist keys the code reads are set |
 
 ## What "only lofi" means in code

@@ -138,7 +138,7 @@ input → trim → low shelf 130 Hz → peaking 900 Hz Q0.9 → high shelf 3600 
       → gain = 10^(dB/20)          (−12…+12 dB, clamped at 4×)
       → limiter                    (web: DynamicsCompressor −6→−24 dB, ratio 16, knee 3,
                                      atk 3 ms, rel 140 ms · iOS: feedback limiter tap,
-                                     ceiling −1 dBFS, release 6 dB/s, max −24 dB)
+                                     ceiling −1 dBFS, release 6 dB/s, capped at −18 dB)
       → soft clip                  (tanh curve / AVAudioUnitDistortion .sloppyCrunch)
       → output → analyser (fft 1024, smoothing 0.72)
 ```

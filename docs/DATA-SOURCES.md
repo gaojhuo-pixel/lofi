@@ -283,7 +283,10 @@ npm --prefix tools test
 #                       and byte-for-byte parity of the Swift gate tables
 #  seed-schema-check.mjs  every non-optional field in LofiModels.swift exists in
 #                       the seed JSON (a missing key = a Decodable crash at boot)
-#  project-check.mjs      ios/project.yml parses, source paths exist, Info.plist
+#  swift-symbol-check.mjs  no undeclared Y2K token, no duplicate top-level type
+#  swift-init-check.mjs    every labelled call site matches the declared init's
+#                       labels *and order*
+#  project-check.mjs    ios/project.yml parses, source paths exist, Info.plist
 #                       keys the code relies on are set
 node tools/gate-check.mjs        # GATE OK, exit 0
 ```

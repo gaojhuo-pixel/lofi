@@ -15,7 +15,7 @@ rendered with Liquid Glass where the OS provides it.
 > | unit tests | **never run** — they are written against the real signatures in this repo and are the fastest way to find the first bugs |
 > | lofi gate behaviour | **verified**: `tools/gate-check.mjs` proves `LofiFilter.swift` carries byte-identical tables to the JS reference, and that the reference accepts 21/21 seed discs and rejects 4/4 non-lofi |
 > | seed data contract | **verified**: `tools/seed-schema-check.mjs` proves every non-optional Swift model field exists in `shared/seed/lofi-feed.json` |
-> | theme/type surface | **verified** for undeclared/ambiguous symbols by `tools/swift-symbol-check.mjs`; **not** verified for signatures |
+> | theme/type surface | **verified** for undeclared/ambiguous symbols by `tools/swift-symbol-check.mjs`, and for init label sets + argument order by `tools/swift-init-check.mjs`; **not** verified for types, optionality or availability |
 >
 > Expect the first `xcodebuild` to produce a handful of ordinary Swift errors (signature
 > drift between a view and a model, a `try` missing, an availability guard). They will be
