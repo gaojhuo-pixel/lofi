@@ -157,8 +157,9 @@ extension YouTubeDataProvider: LofiProviding {
         durationSeconds: Self.seconds(in: video.contentDetails?.duration),
         viewCount: Int(video.statistics?.viewCount ?? "") ?? 0,
         publishedLabel: relative(video.snippet.publishedAt),
-        description: video.snippet.description,
+        // declaration order matters: the model's init lists excerpt before full text
         descriptionExcerpt: String((video.snippet.description ?? "").prefix(280)),
+        description: video.snippet.description,
         tags: video.snippet.tags ?? [],
         source: .youtubeAPI
       )
