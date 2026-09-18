@@ -1,0 +1,221 @@
+name: iOS build
+
+# This repo is SwiftUI + XcodeGen, not Flutter. So: no `flutter pub get`, no
+# `ios/Podfile` to `pod repo update`, and the built product is `LofiGlass.app`,
+# never `Runner.app`.
+#
+# Note on this page: a workflow that is only triggered by `workflow_dispatch`
+# appears in the Actions sidebar when it exists on the default branch, and the
+# branch picker looks for the same file *in the branch you choose*. That is why
+# "iOS-ipa-build / dart.yml" reported "does not exist … in this branch" while
+# the picker was on `arena/01a0b1ee-lofi`.
+#
+# The Swift in `ios/` has never been compiled by anything (no Xcode in the
+# environment that wrote it), so treat the first run as the real build test:
+# expect ordinary Swift errors and fix them on this branch.
+
+on:
+  # Manual: full macOS build + unsigned .ipa artifact.
+  workflow_dispatch:
+    inputs:
+      configuration:
+        description: Build configuration
+        type: choice
+        default: Release
+        options: [Release, Debug]
+      xcode_version:
+        description: >-
+          Xcode to select (see the "Available Xcodes" step for what this runner
+          has). The iOS 26 SDK is required because GlassStyle.swift calls
+          .glassEffect inside #available(iOS 26.0, *), and #available still
+          needs an SDK that knows the symbol.
+        type: string
+        default: latest-stable
+      run_tests:
+        description: Run LofiGlassTests on a simulator before packaging
+        type: boolean
+        default: false
+
+  # Automatic and cheap: the node-side contract checks run on every PR, so a
+  # reviewer sees the gate/schema/symbol results without burning macOS minutes.
+  # (GitHub only exposes "Run workflow" for files on the default branch, so this
+  # trigger is also how the workflow proves it is wired up before it is merged.)
+  pull_request:
+    paths:
+      - "ios/**"
+      - "shared/**"
+      - "tools/**"
+      - "prototype/**"
+      - ".github/workflows/ios-build.yml"
+
+concurrency:
+  group: ios-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SCHEME: LofiGlass
+  PROJECT: ios/LofiGlass.xcodeproj
+  APP_NAME: LofiGlass
+  DERIVED: ${{ github.workspace }}/derived
+
+jobs:
+  # Fast, always-relevant: the repo's own contract checks. These are the only
+  # parts of this project that have ever been executed anywhere.
+  checks:
+    name: Repo checks (node)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            prototype/package-lock.json
+            tools/package-lock.json
+
+      - name: Install
+        run: |
+          npm --prefix tools ci
+          npm --prefix prototype ci
+
+      - name: Gate parity, seed schema, Swift symbols, init signatures, manifest
+        working-directory: tools
+        run: npm test
+
+      - name: Prototype lint + build
+        run: |
+          npm --prefix prototype run lint
+          npm --prefix prototype run build
+
+  build:
+    name: >-
+      ${{ inputs.configuration || 'Release' }} · ${{ github.ref_name }}
+    runs-on: macos-latest
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: checks
+    timeout-minutes: 40
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Available Xcodes on this runner
+        run: ls -d /Applications/Xcode*.app | sed 's#.*/##'
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ inputs.xcode_version }}
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          echo "iOS SDK: $(xcrun --sdk iphoneos --show-sdk-version)"
+
+      - name: Require an iOS 26 SDK
+        run: |
+          sdk="$(xcrun --sdk iphoneos --show-sdk-version)"
+          if [ "${sdk%%.*}" -lt 26 ]; then
+            echo "::error::iOS SDK $sdk is too old: .glassEffect needs the iOS 26 SDK. Re-run with xcode_version set to an Xcode 26.x from the 'Available Xcodes' list."
+            exit 1
+          fi
+
+      # ios/project.yml is the source of truth; the .xcodeproj is generated here
+      # and never committed.
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Generate project
+        working-directory: ios
+        run: |
+          xcodegen generate
+          xcodebuild -list -project LofiGlass.xcodeproj
+
+      - name: Build (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration "${{ inputs.configuration }}" \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath "$DERIVED" \
+            -resultBundlePath "$RUNNER_TEMP/build.xcresult" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= \
+            build
+
+      - name: Test on simulator (optional)
+        if: ${{ inputs.run_tests }}
+        run: |
+          set -o pipefail
+          UDID="$(xcrun simctl list devices available | grep -m1 iPhone | grep -Eo '[0-9A-F-]{36}' | head -1)"
+          [ -n "$UDID" ] || UDID="$(xcrun simctl list devices available | grep -m1 -Eo '[0-9A-F-]{36}')"
+          echo "testing on simulator $UDID"
+          xcodebuild test \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "id=$UDID" \
+            -derivedDataPath "$DERIVED-test" \
+            -resultBundlePath "$RUNNER_TEMP/test.xcresult" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=
+
+      - name: Locate the built app
+        run: |
+          APP="$(find "$DERIVED/Build/Products" -maxdepth 2 -name "$APP_NAME.app" -type d | head -1)"
+          if [ -z "$APP" ]; then
+            echo "::error::no $APP_NAME.app was produced"
+            exit 1
+          fi
+          echo "APP=$APP" >> "$GITHUB_ENV"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP/Info.plist"
+          du -sh "$APP"
+
+      # An .ipa is just a zip with the app under Payload/. This one is unsigned, so
+      # it is for inspection and archiving — installing it on a device needs your
+      # own certificate and profile (archive with a team, or export from Xcode),
+      # which is a secrets problem, not a renaming problem.
+      - name: Package unsigned .ipa
+        run: |
+          set -o pipefail
+          rm -rf "$RUNNER_TEMP/ipa"
+          mkdir -p "$RUNNER_TEMP/ipa/Payload"
+          cp -R "$APP" "$RUNNER_TEMP/ipa/Payload/"
+          rm -f lofi.glass-unsigned.ipa
+          (cd "$RUNNER_TEMP/ipa" && zip -qry "$GITHUB_WORKSPACE/lofi.glass-unsigned.ipa" Payload)
+          ls -lh lofi.glass-unsigned.ipa
+
+      - name: Collect diagnostics
+        if: ${{ !cancelled() }}
+        run: |
+          # upload-artifact looks inside GITHUB_WORKSPACE, so copy the result
+          # bundles over instead of referencing the runner temp dir.
+          for r in build test; do
+            [ -d "$RUNNER_TEMP/$r.xcresult" ] && cp -R "$RUNNER_TEMP/$r.xcresult" "$GITHUB_WORKSPACE/$r.xcresult"
+          done
+          ls -d "$GITHUB_WORKSPACE"/*.xcresult 2>/dev/null || echo "no result bundles"
+
+      - name: Upload build artifact
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lofi.glass-${{ inputs.configuration || 'Release' }}-unsigned
+          path: |
+            lofi.glass-unsigned.ipa
+            *.xcresult
+          if-no-files-found: warn
+          retention-days: 14
+
+      # Deliberately not publishing a release on every click: the snippet this was
+      # adapted from pushed `tag: v1.0` with `overwrite: true`, which replaces one
+      # tagged release forever. If you want releases, tag a commit and use
+      # ${{ github.ref_name }}:
+      #
+      # - name: Upload to release
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: lofi.glass-unsigned.ipa
+      #     tag: ${{ github.ref_name }}
+      #     overwrite: true

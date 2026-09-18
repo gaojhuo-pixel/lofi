@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#120b2e" />
+    <title>lofi.glass — Y2K liquid glass lofi deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&family=Titillium+Web:wght@400;600;900&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <script async src="https://www.youtube.com/iframe_api"></script>
+  </head>
+  <body>
+    <!-- ============ ambient Y2K background ============ -->
+    <div class="bg" aria-hidden="true">
+      <div class="bg__stars"></div>
+      <div class="bg__grid"></div>
+      <div class="bg__sun"></div>
+      <div class="bg__orb bg__orb--a"></div>
+      <div class="bg__orb bg__orb--b"></div>
+      <div class="bg__float bg__float--1">✦</div>
+      <div class="bg__float bg__float--2">✧</div>
+      <div class="bg__float bg__float--3">◍</div>
+    </div>
+
+    <!-- refraction / noise filters for the glass -->
+    <svg class="svg-defs" aria-hidden="true">
+      <defs>
+        <filter id="glass-refract" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="2" seed="7" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="glass-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="g" />
+          <feColorMatrix in="g" type="saturate" values="0" result="g2" />
+          <feComponentTransfer in="g2"><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+          <feComposite in2="SourceGraphic" operator="in" />
+        </filter>
+        <linearGradient id="chrome-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="38%" stop-color="#cfd8ff" />
+          <stop offset="52%" stop-color="#5b63a8" />
+          <stop offset="62%" stop-color="#e9f2ff" />
+          <stop offset="100%" stop-color="#8f9bd8" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <main class="stage">
+      <aside class="stage__side stage__side--left">
+        <h1 class="brand">
+          <span class="brand__word">lofi<span class="brand__dot">.</span>glass</span>
+          <span class="brand__sub">Y2K liqUid · glAss · engine</span>
+        </h1>
+        <p class="pitch">
+          Swipe a disc. It hunts the internet for lofi only — real descriptions, real artist
+          credits, top comments, and a VLC-style gain boost that goes past 0&nbsp;dB without
+          turning into fuzz.
+        </p>
+        <ul class="featurelist">
+          <li><b>liqUid glAss</b> — refracted glass, not blurred rectangles</li>
+          <li><b>onLy LoFi</b> — genre gate rejects jazz-café &amp; deep-house impostors</li>
+          <li><b>every disc</b> — one disc per song, spin locked to the playhead</li>
+          <li><b>boost</b> — −12…+12 dB pre-gain + limiter, like VLC's slider</li>
+          <li><b>creDits</b> — description tracklist parsed into who is on right now</li>
+        </ul>
+        <div class="keyhints">
+          <kbd>←</kbd><kbd>→</kbd> skip / find · <kbd>B</kbd> boost · <kbd>I</kbd> info ·
+          <kbd>S</kbd> search · <kbd>drag</kbd> the disc
+        </div>
+      </aside>
+
+      <!-- ============ the phone ============ -->
+      <div class="phone" id="phone">
+        <div class="phone__bezel"></div>
+        <div class="phone__island"></div>
+        <div class="screen" id="screen">
+
+          <!-- status bar -->
+          <header class="statusbar glass glass--hairline">
+            <span class="statusbar__time" id="clock">0:00</span>
+            <span class="statusbar__mid">lofi.glass</span>
+            <span class="statusbar__right">
+              <i class="rec" title="streaming"></i>
+              <span class="bat">▮▮▮▯ 82%</span>
+            </span>
+          </header>
+
+          <!-- top glass chrome -->
+          <div class="topbar">
+            <button class="glass pill" id="openSearch" aria-label="search lofi">
+              <span class="pill__glyph">⌕</span>
+              <span class="pill__label">search lofi…</span>
+              <span class="pill__kbd">S</span>
+            </button>
+            <button class="glass iconbtn" id="openSettings" aria-label="data source">
+              <span class="srcdot" id="srcDot" data-src="seed"></span>
+            </button>
+          </div>
+
+          <!-- deck -->
+          <section class="deck" id="deck" aria-label="disc deck">
+            <div class="deck__stage" id="ytStage" aria-hidden="true"></div>
+            <div class="deck__hint" id="deckHint">swipe →&nbsp;&nbsp;find a song&nbsp;&nbsp;·&nbsp;&nbsp;←&nbsp;&nbsp;back</div>
+            <div class="deck__stack" id="stack"></div>
+          </section>
+
+          <!-- now playing strip -->
+          <section class="glass nowbar" id="nowbar">
+            <div class="nowbar__marquee"><span id="nowText">standby · press ⏵</span></div>
+            <div class="nowbar__row">
+              <button class="glass iconbtn sm" id="btnPrev" aria-label="previous">⏮</button>
+              <button class="glass playbtn" id="btnPlay" aria-label="play or pause">⏵</button>
+              <button class="glass iconbtn sm" id="btnNext" aria-label="next">⏭</button>
+              <div class="scrub" id="scrub"><div class="scrub__fill" id="scrubFill"></div></div>
+              <span class="nowbar__time mono" id="timeLabel">0:00</span>
+            </div>
+            <div class="nowbar__row nowbar__row--secondary">
+              <button class="glass chip" id="openInfo">◈ desc · credits · comments</button>
+              <button class="glass chip" id="openBoost">((•)) boost <b id="boostMini">+0.0dB</b></button>
+            </div>
+          </section>
+
+          <!-- dock -->
+          <nav class="glass dock" id="dock">
+            <button class="dock__item is-on" data-tab="deck"><span>✦</span><i>deck</i></button>
+            <button class="dock__item" data-tab="info"><span>◈</span><i>info</i></button>
+            <button class="dock__item" data-tab="boost"><span>((•))</span><i>boost</i></button>
+            <button class="dock__item" data-tab="crate"><span>♥</span><i>crate</i></button>
+            <button class="dock__item" data-tab="search"><span>⌕</span><i>search</i></button>
+          </nav>
+          <div class="homebar"></div>
+
+          <!-- glass sheets -->
+          <div class="sheet" id="sheetInfo" hidden></div>
+          <div class="sheet" id="sheetBoost" hidden></div>
+          <div class="sheet" id="sheetSearch" hidden></div>
+          <div class="sheet" id="sheetCrate" hidden></div>
+          <div class="sheet" id="sheetSettings" hidden></div>
+          <div class="scrim" id="scrim" hidden></div>
+
+          <!-- overlays -->
+          <div class="crt" aria-hidden="true"></div>
+          <div class="flash" id="flash" aria-hidden="true"></div>
+          <div class="toast" id="toast" hidden></div>
+          <div class="unmute glass" id="unmute" hidden>
+            <button id="unmuteBtn"><span>◉</span> tap to unmute</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ dev panel ============ -->
+      <aside class="stage__side stage__side--right">
+        <div class="glass panel">
+          <h2>console</h2>
+          <div class="panel__grid">
+            <label>source
+              <select id="selSource">
+                <option value="seed">offline seed</option>
+                <option value="piped">piped (live)</option>
+              </select>
+            </label>
+            <label>mode
+              <select id="selMode">
+                <option value="deck">deck</option>
+                <option value="radio">endless radio</option>
+              </select>
+            </label>
+            <label>player
+              <select id="selPlayer">
+                <option value="youtube">YouTube IFrame</option>
+                <option value="synth">synth lofi (web audio)</option>
+              </select>
+            </label>
+          </div>
+          <div class="panel__meter">
+            <span class="mono">OUT</span>
+            <div class="meter"><div class="meter__bar" id="meterBar"></div><div class="meter__zero"></div></div>
+            <span class="mono" id="meterDb">-∞</span>
+            <span class="clipled" id="clipLed">CLIP</span>
+          </div>
+          <div class="panel__log mono" id="log"></div>
+          <p class="fine">
+            Prototype = the exact UI/UX spec of <code>ios/</code>. YouTube IFrame audio can't be
+            tapped by Web Audio (cross-origin), so real −12…+12 dB boost is auditioned on
+            <i>synth lofi</i>; on device the same chain runs in <code>AVAudioEngine</code>.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

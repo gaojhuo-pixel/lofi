@@ -1,0 +1,17 @@
+{
+  "name": "lofiglass-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Live browser prototype for the LofiGlass Y2K / liquid-glass iOS app",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "vite": "^5.4.11"
+  }
+}
