@@ -1,0 +1,862 @@
+{
+  "version": 3,
+  "generatedAt": "2026-09-18",
+  "notes": [
+    "Single source of truth for both deliverables in this repo.",
+    "The prototype serves this file verbatim (vite publicDir = repo shared/); the iOS app bundles it as a resource via ios/project.yml.",
+    "No sync step: if a note here changes, both surfaces change together.",
+    "comments[].provenance: sample = hand-typed exemplar phrasing; live = fetched from a public metadata mirror and kept as-is.",
+    "excludedExamples are things a lofi app must refuse: they feed the gate test, not the UI.",
+    "Tracklists were read off watch pages; verify against the live video before shipping."
+  ],
+  "querySeeds": [
+    {
+      "label": "lofi hip hop radio",
+      "query": "lofi hip hop radio",
+      "mood": "study",
+      "kind": "radio",
+      "channel": "Lofi Girl"
+    },
+    {
+      "label": "beats to relax / study",
+      "query": "beats to relax / study to",
+      "mood": "relax",
+      "kind": "mix",
+      "channel": "The Bootleg Beat"
+    },
+    {
+      "label": "lofi mix (freshness)",
+      "query": "lofi mix",
+      "mood": null,
+      "kind": "mix",
+      "channel": null
+    },
+    {
+      "label": "lofi sleep",
+      "query": "lofi sleep",
+      "mood": "sleep",
+      "kind": "mix",
+      "channel": "Dreamy"
+    },
+    {
+      "label": "lofi rain",
+      "query": "lofi rain",
+      "mood": "rain",
+      "kind": "mix",
+      "channel": null
+    },
+    {
+      "label": "jazz / café",
+      "query": "jazz lofi cafe",
+      "mood": "cafe",
+      "kind": "mix",
+      "channel": "Cafe Music BGM"
+    },
+    {
+      "label": "night drive",
+      "query": "lofi night drive",
+      "mood": "night-drive",
+      "kind": "mix",
+      "channel": "Fujin Lyrics"
+    },
+    {
+      "label": "slowed + reverb",
+      "query": "slowed + reverb",
+      "mood": "sad",
+      "kind": "track",
+      "channel": null
+    },
+    {
+      "label": "24/7 radio search",
+      "query": "lofi hip hop radio live",
+      "mood": null,
+      "kind": "live",
+      "channel": null
+    },
+    {
+      "label": "feed (no query)",
+      "query": null,
+      "mood": null,
+      "kind": "radio",
+      "channel": null
+    },
+    {
+      "label": "japanese lofi",
+      "query": "japanese lofi",
+      "mood": null,
+      "kind": "mix",
+      "channel": "Dreamy"
+    },
+    {
+      "label": "lofi cover / acoustic",
+      "query": "lofi cover acoustic",
+      "mood": null,
+      "kind": "track",
+      "channel": null
+    }
+  ],
+  "tracks": [
+    {
+      "videoId": "n61ULEU7CO0",
+      "kind": "mix",
+      "title": "Best of lofi hip hop 2021 ✨ [beats to relax/study to]",
+      "channelName": "Lofi Girl",
+      "channelHandle": "@LofiGirl",
+      "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+      "durationSeconds": 22258,
+      "viewCount": 57000000,
+      "publishedLabel": "4 years ago",
+      "mood": "study",
+      "descriptionExcerpt": "Listen on Spotify, Apple music and more → https://fanlink.tv/Bestof2021 The new Lofi Girl compilation “Best of 2021” is out now. All tracks are cleared and credited below — if you are an artist and want your music featured, submit at submit.lofigirl.com",
+      "tags": [
+        "lofi",
+        "lofi hip hop",
+        "beats to relax",
+        "study beats",
+        "compilation"
+      ],
+      "tracklist": [
+        {
+          "startSeconds": 0,
+          "artist": "No Spirit",
+          "title": "Memories We Made"
+        },
+        {
+          "startSeconds": 380,
+          "artist": "Yasumu",
+          "title": "We Met"
+        },
+        {
+          "startSeconds": 522,
+          "artist": "HM Surf",
+          "title": "Sugar Haze"
+        },
+        {
+          "startSeconds": 669,
+          "artist": "Blurred Figures, another silent weekend",
+          "title": "snowfall"
+        },
+        {
+          "startSeconds": 825,
+          "artist": "trxxshed, Jhove",
+          "title": "Ivory"
+        },
+        {
+          "startSeconds": 972,
+          "artist": "Lilac",
+          "title": "Perfume"
+        }
+      ],
+      "license": "Cleared by Lofi Records",
+      "comments": [
+        {
+          "author": "piano_moth",
+          "text": "the fact that this whole genre exists so i can feel less alone at 3am is genuinely healing",
+          "likes": 41200,
+          "provenance": "sample"
+        },
+        {
+          "author": "dust_on_the_mic",
+          "text": "anyone here because the algorithm knows you have a deadline in 6 hours?",
+          "likes": 28700,
+          "provenance": "sample"
+        },
+        {
+          "author": "kasumi.exe",
+          "text": "this is my third year studying to this channel. i graduated. i still listen.",
+          "likes": 15300,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "CFGLoQIhmow",
+      "kind": "mix",
+      "title": "lofi hip hop mix 📚 beats to relax/study to (Part 1)",
+      "channelName": "Lofi Girl",
+      "channelHandle": "@LofiGirl",
+      "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+      "durationSeconds": 10241,
+      "viewCount": 9200000,
+      "publishedLabel": "1 year ago",
+      "mood": "study",
+      "descriptionExcerpt": "Lofi Girl Limited Print → https://bit.ly/3Ytqf6o | Listen on Spotify, Apple music and more → https://fanlink.tv/lofigirl-music. Tracklist with timestamps below; artists are credited per track.",
+      "tags": [
+        "lofi",
+        "study",
+        "relax",
+        "instrumental",
+        "tracklist"
+      ],
+      "tracklist": [
+        {
+          "startSeconds": 0,
+          "artist": "No Spirit",
+          "title": "Memories We Made"
+        },
+        {
+          "startSeconds": 380,
+          "artist": "Yasumu",
+          "title": "We Met"
+        },
+        {
+          "startSeconds": 522,
+          "artist": "HM Surf",
+          "title": "Sugar Haze"
+        },
+        {
+          "startSeconds": 669,
+          "artist": "Blurred Figures, another silent weekend",
+          "title": "snowfall"
+        },
+        {
+          "startSeconds": 825,
+          "artist": "trxxshed, Jhove",
+          "title": "Ivory"
+        },
+        {
+          "startSeconds": 972,
+          "artist": "Lilac",
+          "title": "Perfume"
+        }
+      ],
+      "license": "Cleared by Lofi Records",
+      "comments": [
+        {
+          "author": "late_night_lab",
+          "text": "669 snowfall. that's the one where you stare out the window instead of revising",
+          "likes": 9100,
+          "provenance": "sample"
+        },
+        {
+          "author": "tape_hiss",
+          "text": "the amount of pressure in my chest that leaves when i press play on these is unreal",
+          "likes": 6400,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "8b3fqIBrNW0",
+      "kind": "mix",
+      "title": "lofi hip hop mix 📚 beats to relax/study to (Part 2)",
+      "channelName": "Lofi Girl",
+      "channelHandle": "@LofiGirl",
+      "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+      "durationSeconds": 14702,
+      "viewCount": 1600000,
+      "publishedLabel": "1 year ago",
+      "mood": "focus",
+      "descriptionExcerpt": "Part 2 of the lofi hip hop mix. 4K. All music released on Lofi Records — full credits and timestamps in the description.",
+      "tags": [
+        "lofi",
+        "4k",
+        "focus",
+        "mix"
+      ],
+      "license": "Cleared by Lofi Records",
+      "comments": [
+        {
+          "author": "quiet_static",
+          "text": "part 2 has the softer piano ones. the desk lamp + this = the only way i function",
+          "likes": 2300,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "CLeZyIID9Bo",
+      "kind": "mix",
+      "title": "Chill Lofi Mix [chill lo-fi hip hop beats]",
+      "channelName": "Settle",
+      "channelHandle": "@settlefm",
+      "durationSeconds": 6292,
+      "viewCount": 34000000,
+      "publishedLabel": "4 years ago",
+      "mood": "chill",
+      "descriptionExcerpt": "YouTube Playlists: http://listen.settle.fm/youtube Listen on Spotify, Apple Music & more: https://listen.settle.fm/playlists Tracklist: Sutton – Lunch Break, Noji – Exhale, home grown – out of office, Hazue – Bloom, swiftly – happy place, Thymes – Free as a Bird, Noji – On My Way",
+      "tags": [
+        "chill",
+        "lo-fi",
+        "settle",
+        "4k",
+        "tracklist"
+      ],
+      "tracklist": [
+        {
+          "startSeconds": 0,
+          "artist": "Sutton",
+          "title": "Lunch Break"
+        },
+        {
+          "startSeconds": 107,
+          "artist": "Noji",
+          "title": "Exhale"
+        },
+        {
+          "startSeconds": 239,
+          "artist": "home grown",
+          "title": "out of office"
+        },
+        {
+          "startSeconds": 349,
+          "artist": "Hazue",
+          "title": "Bloom"
+        },
+        {
+          "startSeconds": 467,
+          "artist": "swiftly",
+          "title": "happy place"
+        },
+        {
+          "startSeconds": 568,
+          "artist": "Thymes",
+          "title": "Free as a Bird"
+        },
+        {
+          "startSeconds": 702,
+          "artist": "Noji",
+          "title": "On My Way"
+        }
+      ],
+      "license": "Settle FM playlist · artists linked in description",
+      "comments": [
+        {
+          "author": "noji_stan",
+          "title_note": "",
+          "text": "Exhale at 1:47 is criminally short. put it on loop",
+          "likes": 4800,
+          "provenance": "sample"
+        },
+        {
+          "author": "lunchbreak",
+          "text": "Sutton – Lunch Break lives rent free in my head during every work lunch. accurate branding",
+          "likes": 1900,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "lXSIxqm0Pwc",
+      "kind": "mix",
+      "title": "If Mac Miller made lofi hip hop (6 Hours Mix)",
+      "channelName": "jeez",
+      "channelHandle": "@jeezlofi",
+      "durationSeconds": 21108,
+      "viewCount": 678000,
+      "publishedLabel": "1 year ago",
+      "mood": "sad",
+      "descriptionExcerpt": "If Mac Miller made lofi hip hop remix (6-Hour Mix). Original music. Enjoy. 0:00 Surf 3:40 Woods 7:45 Blue World 11:00 Right 14:57 Self Care 18:22 Once a Day 22:05 Hurt Feelings",
+      "tags": [
+        "lofi",
+        "mac miller",
+        "original music",
+        "6 hour",
+        "concept mix"
+      ],
+      "tracklist": [
+        {
+          "startSeconds": 0,
+          "artist": "jeez",
+          "title": "Surf"
+        },
+        {
+          "startSeconds": 220,
+          "artist": "jeez",
+          "title": "Woods"
+        },
+        {
+          "startSeconds": 465,
+          "artist": "jeez",
+          "title": "Blue World"
+        },
+        {
+          "startSeconds": 660,
+          "artist": "jeez",
+          "title": "Right"
+        },
+        {
+          "startSeconds": 897,
+          "artist": "jeez",
+          "title": "Self Care"
+        },
+        {
+          "startSeconds": 1102,
+          "artist": "jeez",
+          "title": "Once a Day"
+        },
+        {
+          "startSeconds": 1325,
+          "artist": "jeez",
+          "title": "Hurt Feelings"
+        }
+      ],
+      "license": "Original music by jeez",
+      "comments": [
+        {
+          "author": "dunno_blue",
+          "text": "Self Care at 14:57 hit me in the exact spot. no notes.",
+          "likes": 3300,
+          "provenance": "sample"
+        },
+        {
+          "author": "campfire_kid",
+          "text": "concept mixes that are just one producer having a whole feeling for 6 hours > everything",
+          "likes": 1200,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "zW5wpJY1rgQ",
+      "kind": "mix",
+      "title": "Ｎｉｇｈｔ Ｄｒｉｖｅ ~ lofi hip hop mix ~ beats to chill / drive to",
+      "channelName": "Mimi Lofi Chill",
+      "channelHandle": "@mimilofichill",
+      "durationSeconds": 88623,
+      "viewCount": 6100000,
+      "publishedLabel": "3 years ago",
+      "mood": "night-drive",
+      "descriptionExcerpt": "Listen to PUEBLO VISTA // ⟪ pvmm ⟫ → https://pvmm.ffm.to/lofivibes → https://pvmm.ffm.to/chillbeats",
+      "tags": [
+        "night drive",
+        "lofi",
+        "full width text",
+        "aesthetic",
+        "pvmm"
+      ],
+      "license": "Label: pvmm",
+      "comments": [
+        {
+          "author": "headlights",
+          "text": "24 hours long. i have driven to the next time zone and back on this exact mix",
+          "likes": 8700,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "UJs6__K7gSY",
+      "kind": "mix",
+      "title": "Bedtime Lofi 💤 8 hours of relaxing beats to sleep to",
+      "channelName": "Lofi Girl",
+      "channelHandle": "@LofiGirl",
+      "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+      "durationSeconds": 28828,
+      "viewCount": 6800000,
+      "publishedLabel": "11 months ago",
+      "mood": "sleep",
+      "descriptionExcerpt": "Time to catch some z's with our brand-new 8hr sleep mix, perfect to help you unwind and guide you into deep sleep. Listen on streaming → link.lofigirl.com/m/music",
+      "tags": [
+        "sleep",
+        "8 hours",
+        "lofi",
+        "wind down",
+        "timer friendly"
+      ],
+      "license": "Cleared by Lofi Records",
+      "comments": [
+        {
+          "author": "3am_club",
+          "text": "set a 45 min sleep timer, woke up at 7, this was still going. i have never felt more held",
+          "likes": 19400,
+          "provenance": "sample"
+        },
+        {
+          "author": "soft_boots",
+          "text": "the rain one at minute 40 is my entire childhood remembered in 3 minutes",
+          "likes": 5100,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "sF80I-TQiW0",
+      "kind": "mix",
+      "title": "90's Chill Lofi ☕️ Study Music Lofi Rain Chillhop Beats ☔️ Lofi Rain Playlist",
+      "channelName": "The Japanese Town",
+      "channelHandle": "@TheJapaneseTown-jt6fy",
+      "durationSeconds": 42825,
+      "viewCount": 28000000,
+      "publishedLabel": "2 years ago",
+      "mood": "rain",
+      "descriptionExcerpt": "The Japanese Town is dedicated for lofi beats & lofi rain music. We present relaxing rain Atmosphere and lofi ambience which is perfect for studying, sleeping, working. 4K loop.",
+      "tags": [
+        "rain",
+        "90s",
+        "chillhop",
+        "ambience",
+        "4k"
+      ],
+      "license": "Rain ambience + cleared beats",
+      "comments": [
+        {
+          "author": "window_seat",
+          "text": "rain layer is mixed loud enough that it actually works as weather, not wallpaper. respect",
+          "likes": 7400,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "THh4fT0O7IY",
+      "kind": "mix",
+      "title": "Upbeat Lofi - Deep Focus & Energy for Work [R&B, Neo Soul, Lofi Hiphop]",
+      "channelName": "A Lofi Soul",
+      "channelHandle": "@A-Lofi-Soul",
+      "durationSeconds": 12149,
+      "viewCount": 2900000,
+      "publishedLabel": "1 year ago",
+      "mood": "work",
+      "descriptionExcerpt": "Spark a vibe and a mood with our smooth lofi vibes. Become A Lofi Soul & Subscribe. Genre blend: R&B / neo soul / lofi hip hop. Artist credits in the pinned comment.",
+      "tags": [
+        "r&b",
+        "neo soul",
+        "upbeat lofi",
+        "work"
+      ],
+      "comments": [
+        {
+          "author": "spreadsheet_gremlin",
+          "text": "lofi with a little swing in it is the only acceptable way to do payroll",
+          "likes": 990,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "1J4a9cT2lkw",
+      "kind": "mix",
+      "title": "Upbeat Lofi Mix ⚡️ Beats to Boost Your Energy & Focus",
+      "channelName": "Lofi Shop 24h",
+      "channelHandle": "@LofiShop24h",
+      "durationSeconds": 16073,
+      "viewCount": 1300000,
+      "publishedLabel": "10 months ago",
+      "mood": "morning",
+      "descriptionExcerpt": "Kickstart your day with the Lofi Morning Boost ☀️. This is your daily dose of upbeat lofi, chillhop and study beats. Submit music: form in the about tab.",
+      "tags": [
+        "morning",
+        "upbeat",
+        "chillhop",
+        "daily"
+      ],
+      "comments": [
+        {
+          "author": "6am_person",
+          "text": "coffee not required anymore and i mean that as a compliment",
+          "likes": 640,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "OO2kPK5-qno",
+      "kind": "mix",
+      "title": "Make you feel positive and peaceful 🍀 Lofi Coffee ☕ ~ Lofi Hip Hop - Lofi Music [ Study/ Relax ]",
+      "channelName": "Lofi Coffee",
+      "channelHandle": "@lofi_cafe_s2",
+      "durationSeconds": 88718,
+      "viewCount": 13000000,
+      "publishedLabel": "2 years ago",
+      "mood": "cafe",
+      "descriptionExcerpt": "lofi #chill #lofimusic #lofistudy #chillmusic #lofisleep #lofihiphop #coffee #relax #chillbeats #studymusic #summer. Make you feel positive and peaceful. Cafe ambience included.",
+      "tags": [
+        "cafe",
+        "coffee",
+        "summer",
+        "chillbeats",
+        "studymusic",
+        "lofistudy"
+      ],
+      "comments": [
+        {
+          "author": "oat_flat_white",
+          "text": "genuinely heard a barista ask if i wanted a refill while this was on",
+          "likes": 2400,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "8iU8LPEa4o0",
+      "kind": "mix",
+      "title": "Chill Study Beats 4 • jazz & lofi hiphop Mix [2017]",
+      "channelName": "The Bootleg Boy",
+      "channelHandle": "@thebootlegboy",
+      "durationSeconds": 7275,
+      "viewCount": 4100000,
+      "publishedLabel": "8 years ago",
+      "mood": "jazzy",
+      "descriptionExcerpt": "Chill Study Beats 4 • jazz & lofi hiphop Mix. Tracklist and artist credits in the description; submit music via the label form.",
+      "tags": [
+        "jazzhop",
+        "study beats",
+        "2017",
+        "classic"
+      ],
+      "comments": [
+        {
+          "author": "realbook_reader",
+          "text": "the 2017 era of this genre is undefeated and i will not be taking questions",
+          "likes": 5300,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "rFZHOHl-L8A",
+      "kind": "live",
+      "title": "lofi hip hop radio 📚 beats to relax/study to",
+      "channelName": "Lofi Girl",
+      "channelHandle": "@LofiGirl",
+      "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+      "durationSeconds": 0,
+      "viewCount": 0,
+      "watching": "10K watching",
+      "publishedLabel": "live now",
+      "mood": "study",
+      "descriptionExcerpt": "Where's Jade? Pocky is looking for her... Could the answer be linked to this: https://youtube.com/live/1ctE0s1dAkA?feature=share. 24/7 stream — no ads between tracks by design.",
+      "tags": [
+        "live",
+        "24/7",
+        "radio",
+        "no ads"
+      ],
+      "license": "Cleared by Lofi Records",
+      "comments": [
+        {
+          "author": "chat_ghost",
+          "text": "the chat at 4am is the loneliest and warmest place on the internet",
+          "likes": 61000,
+          "provenance": "sample"
+        },
+        {
+          "author": "pocky_watch",
+          "text": "anyone else mostly here for the Jade / Pocky lore breadcrumbs",
+          "likes": 12200,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "ByZGu229-yA",
+      "kind": "live",
+      "title": "lofi hip hop radio- 24/7 beats to study, relax and code to ✨️",
+      "channelName": "Afro Lofi",
+      "channelHandle": "@afrolofi",
+      "durationSeconds": 0,
+      "viewCount": 0,
+      "watching": "17 watching",
+      "publishedLabel": "live now",
+      "mood": "code",
+      "descriptionExcerpt": "Enjoy this variation of neo soul, lofi, afrobeats and trap soul music to allow you to vibe, relax and immerse yourself in your work.",
+      "tags": [
+        "afro lofi",
+        "neo soul",
+        "code",
+        "24/7"
+      ],
+      "comments": [
+        {
+          "author": "small_room",
+          "text": "17 people online and it feels like a group chat. best kind of radio",
+          "likes": 300,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "L0Jt88UT_A8",
+      "kind": "track",
+      "title": "kudasai - shappire",
+      "channelName": "Chilled Hot",
+      "channelHandle": "@chilledhot725",
+      "durationSeconds": 231,
+      "viewCount": 107,
+      "publishedLabel": "7 years ago",
+      "mood": "vhs",
+      "descriptionExcerpt": "Prod. kudasai. IGNORE TAGS: #vhs #chillbeats #edit #artist #chillmusic #chillhop #aesthetics #beatmaker #memes #grunge",
+      "tags": [
+        "vhs",
+        "chillbeats",
+        "chillhop",
+        "aesthetics",
+        "beatmaker",
+        "grunge"
+      ],
+      "creditOverride": "Prod. kudasai",
+      "comments": [
+        {
+          "author": "old_internet",
+          "text": "47 views and this is still the best thing on my recommended page",
+          "likes": 12,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "7BC_uRlFdfE",
+      "kind": "track",
+      "title": "Spirited away ~ The Sixth Station ~ lofi hip hop",
+      "channelName": "SadNbeats",
+      "channelHandle": "@sadnbeats7712",
+      "durationSeconds": 122,
+      "viewCount": 772,
+      "publishedLabel": "5 years ago",
+      "mood": "anime",
+      "descriptionExcerpt": "DM ME ON INSTA https://instagram.com/sadnbeats Subscribe for more remixes! Soundcloud in the pinned comment. Anime edit loop, 2:02.",
+      "tags": [
+        "anime edit",
+        "ghibli adjacent",
+        "remix",
+        "loop"
+      ],
+      "comments": [
+        {
+          "author": "sixth_station",
+          "text": "two minutes that feel like missing a train on purpose",
+          "likes": 61,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "hett5xG1hng",
+      "kind": "track",
+      "title": "Mike Brando - Urban spirit (#lofi hip hop music)",
+      "channelName": "Mike Brando",
+      "channelHandle": "@mikebrando",
+      "durationSeconds": 138,
+      "viewCount": 116,
+      "publishedLabel": "7 years ago",
+      "mood": "chill",
+      "descriptionExcerpt": "LoFi Chill music #CreativeCommonsMusic #FreeMusicForVideo © Licence: You're free to use this song in any of your videos.",
+      "tags": [
+        "creative commons",
+        "free to use",
+        "beatmaker"
+      ],
+      "creditOverride": "Mike Brando · CC-licensed, free to use",
+      "comments": [
+        {
+          "author": "editor_kev",
+          "text": "CC licensed lofi from a small channel is the most underrated resource on this site",
+          "likes": 8,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "qIwMmYtgwCY",
+      "kind": "track",
+      "title": "Running Out Of Time by No Spirit x Tonion - Music to relax and focus [ 1 hour ]",
+      "channelName": "Kami Sabishi",
+      "channelHandle": "@Kamisabishi",
+      "durationSeconds": 3541,
+      "viewCount": 3800,
+      "publishedLabel": "3 years ago",
+      "mood": "focus",
+      "descriptionExcerpt": "Thanks for watching! Consider subscribing. One loop, one hour, no talking. Original track by No Spirit x Tonion.",
+      "tags": [
+        "one loop",
+        "hour long",
+        "no spirit",
+        "tonion",
+        "focus"
+      ],
+      "creditOverride": "No Spirit x Tonion",
+      "comments": [
+        {
+          "author": "loop_maintainer",
+          "text": "an hour of a single 3 minute track is either a meditative retreat or a hostage situation and i consent",
+          "likes": 44,
+          "provenance": "sample"
+        }
+      ]
+    },
+    {
+      "videoId": "scyE0cl-T4k",
+      "kind": "track",
+      "title": "Nymano - Solitude",
+      "channelName": "Jonathan Lopez",
+      "channelHandle": "@JonathanLopez-mi9lp",
+      "durationSeconds": 149,
+      "viewCount": 0,
+      "publishedLabel": "from a 61-video crate",
+      "mood": "sad",
+      "descriptionExcerpt": "Saved from the 'Beats 😴😪' crate. Nymano releases most of his catalogue under a free-to-listen license; support the artist on Bandcamp.",
+      "tags": [
+        "nymano",
+        "solitude",
+        "short",
+        "crate dig"
+      ],
+      "creditOverride": "Nymano",
+      "comments": []
+    },
+    {
+      "videoId": "qnjnC6IunPU",
+      "kind": "track",
+      "title": "Lofi Hip Hop | Almost home",
+      "channelName": "1N54N3",
+      "channelHandle": "@1N54N33",
+      "durationSeconds": 170,
+      "viewCount": 0,
+      "publishedLabel": "from a 25-video crate",
+      "mood": "travel",
+      "descriptionExcerpt": "From the 'lo-fi mixes' playlist. Almost home — the feeling of the last 20 minutes of any journey.",
+      "tags": [
+        "almost home",
+        "travel",
+        "lo-fi"
+      ],
+      "comments": []
+    },
+    {
+      "videoId": "FHYRoRc0CNM",
+      "kind": "track",
+      "title": "Nymano - Sorry",
+      "channelName": "Jonathan Lopez",
+      "channelHandle": "@JonathanLopez-mi9lp",
+      "durationSeconds": 113,
+      "viewCount": 0,
+      "publishedLabel": "from a 61-video crate",
+      "mood": "sad",
+      "descriptionExcerpt": "From the 'Beats 😴😪' crate, 1:53 of piano and tape hiss.",
+      "tags": [
+        "nymano",
+        "piano",
+        "1:53"
+      ],
+      "creditOverride": "Nymano",
+      "comments": []
+    }
+  ],
+  "excludedExamples": [
+    {
+      "videoId": "kakqnmxErns",
+      "title": "Calm September Morning Jazz 🍂 Cozy Autumn Porch Ambience with Jazz Relaxing Music",
+      "channelName": "Sweet Jazz Cafe",
+      "rejectReason": "jazz cafe ambience — no lofi signal in title/tags/description"
+    },
+    {
+      "videoId": "4Yzi94n8NQU",
+      "title": "Smooth Chill Lounge & Chillout Lounge Music For Sunset Beach Vibes - Relaxing Deep House 2026",
+      "channelName": "Ocean Pearl Lounge",
+      "rejectReason": "deep house / lounge — tempo and genre mismatch"
+    },
+    {
+      "videoId": "3Eyun39FddU",
+      "title": "Relaxing Bossa Nova Coffee & Smooth Coffee Shop Jazz For A Productive Afternoon",
+      "channelName": "Golden Café",
+      "rejectReason": "bossa nova — beats present but no hip hop drum bed"
+    },
+    {
+      "videoId": "Wkp56mBcye8",
+      "title": "First Bell, Golden Leaves 🍎 Back to School Jazz with Snoopy",
+      "channelName": "Snoopy Chill Jazz",
+      "rejectReason": "licensed-characters jazz — 'chill' is a branding word, not a genre signal"
+    }
+  ]
+}

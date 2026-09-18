@@ -1,0 +1,13 @@
+{
+  "name": "lofiglass-tools",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Repo checks: lofi gate parity + XcodeGen manifest sanity",
+  "scripts": {
+    "test": "node ./gate-check.mjs && node ./seed-schema-check.mjs && node ./swift-symbol-check.mjs && node ./project-check.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
+  }
+}

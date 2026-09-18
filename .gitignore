@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.xcuserstate
+xcuserdata/
+build/
+.derivedData/
+tools/node_modules/
+prototype/.vite/
+*.log
